@@ -131,7 +131,7 @@
                                     </div>
                                     <div class="col" v-if="skill.upgrades">
                                         <h5>Level 7-10 Monster Hunt</h5>
-                                        <table class="table table-striped">
+                                        <table class="table table-striped table-sm">
                                             <tr v-for="level in [0, 1, 2, 3]">
                                                 <th>Level {{ level + 7 }}</th>
                                                 <td>
@@ -189,7 +189,7 @@
                                     </div>
                                     <div class="col">
                                         <h5>Level 5-6 Monster Hunt</h5>
-                                        <table class="table table-striped">
+                                        <table class="table table-striped table-sm">
                                             <tr v-for="level in [0, 1]">
                                                 <th>Level {{ level + 5 }}</th>
                                                 <td>
@@ -204,7 +204,7 @@
                                         </table>
 
                                         <h5 v-if="skill.statUpgradesPerLevel">Stat Upgrades Per Level</h5>
-                                        <table v-if="skill.statUpgradesPerLevel" class="table table-striped">
+                                        <table v-if="skill.statUpgradesPerLevel" class="table table-striped table-sm">
                                             <tr v-for="(upgrade, index) in skill.statUpgradesPerLevel">
                                                 <th>Level {{ index+ 1 }}</th>
                                                 <td>{{ upgrade }}</td>
