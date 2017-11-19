@@ -29,6 +29,9 @@ var vue = new Vue({
         },
         selectSkill(skillName) {
             updateHash(skillName);
+        },
+        scrollTo(id) {
+            document.getElementById(id).scrollIntoView();
         }
     }
 });

@@ -11,6 +11,21 @@
 
     <style>
         [v-cloak] { display: none !important; }
+        .fab {
+            position: fixed;
+            bottom: 50px;
+            right: 30px;
+            border-radius: 50%;
+            background-color: #007bff;
+            border-color: #005cbf;
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
     </style>
 
     <script src="https://unpkg.com/vue@2.5.6"></script>
@@ -22,7 +37,7 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">DDON Vocation Skills</a>
+        <a class="navbar-brand" href @click.prevent>DDON Vocation Skills</a>
 
         <ul class="navbar-nav ml-auto">
             <li class="mr-2">
@@ -57,10 +72,19 @@
             </div>
         </div>
 
-        <div v-cloak class="row mt-3" v-if="selectedVocation">
+        <div v-cloak class="row mt-3" v-if="selectedVocation" id="top">
             <div class="col">
-                <nav class="navbar navbar-dark bg-dark text-center">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                     <a class="navbar-brand" href @click.prevent>{{ selectedVocation }}</a>
+
+                    <ul class="navbar-nav ml-auto">
+                        <li>
+                            <a class="nav-link" @click.prevent="scrollTo('skills')">Skills</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" @click.prevent="scrollTo('augments')">Augments</a>
+                        </li>
+                    </ul>
                 </nav>
             </div>
         </div>
@@ -100,7 +124,7 @@
             </div>
         </div>
 
-        <div v-cloak class="row mt-3" v-if="selectedVocation && (showData.baseSkills || showData.unlockedSkills)">
+        <div v-cloak class="row mt-3" v-if="selectedVocation && (showData.baseSkills || showData.unlockedSkills)" id="skills">
             <div class="col">
                 <nav class="navbar navbar-dark bg-dark text-center">
                     <a class="navbar-brand" href @click.prevent>{{ selectedVocation }} Skills</a>
@@ -130,7 +154,7 @@
                                         <p v-if="skill.onLevelSix"><strong>At Level 6</strong>: {{ skill.onLevelSix }}</p>
                                     </div>
                                     <div class="col" v-if="skill.upgrades">
-                                        <h5>Level 7-10 Monster Hunt</h5>
+                                        <h5>Job Training: Skill Level 7-10</h5>
                                         <table class="table table-striped table-sm">
                                             <tr v-for="level in [0, 1, 2, 3]">
                                                 <th>Level {{ level + 7 }}</th>
@@ -139,7 +163,7 @@
                                                     <ul v-if="skill.upgrades[level]" class="mb-0">
                                                         <li v-for="upgrade of skill.upgrades[level].monsters">
                                                             <a :href="'/ddon-monster-locations#' + upgrade.name" target="_blank">
-                                                                {{ upgrade.name }} ~ Lv. {{ upgrade.level }} ({{ upgrade.qty }})
+                                                                {{ upgrade.name }} ~ Lv. {{ upgrade.level }} (x{{ upgrade.qty }})
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -162,7 +186,7 @@
             </div>
         </div>
 
-        <div v-cloak class="row mt-3" v-if="selectedVocation && (showData.baseAugs || showData.unlockedAugs)">
+        <div v-cloak class="row mt-3" v-if="selectedVocation && (showData.baseAugs || showData.unlockedAugs)" id="augments">
             <div class="col">
                 <nav class="navbar navbar-dark bg-dark text-center">
                     <a class="navbar-brand" href @click.prevent>{{ selectedVocation }} Augments</a>
@@ -190,7 +214,7 @@
                                         <p><strong>Every Level</strong>: {{ skill.onLevelUp }}</p>
                                     </div>
                                     <div class="col">
-                                        <h5>Level 5-6 Monster Hunt</h5>
+                                        <h5>Job Training: Augment Level 5-6</h5>
                                         <table class="table table-striped table-sm">
                                             <tr v-for="level in [0, 1]">
                                                 <th>Level {{ level + 5 }}</th>
@@ -199,7 +223,7 @@
                                                     <ul v-if="skill.upgrades[level]" class="mb-0">
                                                         <li v-for="upgrade of skill.upgrades[level].monsters">
                                                             <a :href="'/ddon-monster-locations#' + upgrade.name" target="_blank">
-                                                                {{ upgrade.name }} ~ Lv. {{ upgrade.level }} ({{ upgrade.qty }})
+                                                                {{ upgrade.name }} ~ Lv. {{ upgrade.level }} (x{{ upgrade.qty }})
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -255,6 +279,10 @@
                 </div>
             </div>
         </div>
+
+        <button class="fab" @click="scrollTop('top')">
+            <i class="fa fa-arrow-up"></i>
+        </button>
     </main>
 
     <nav class="navbar fixed-bottom navbar-expand navbar-dark bg-dark d-none d-md-block d-l-block d-xl-block p-0">
