@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Search for monsters in Dragons Dogma Online">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>DDON Vocation Skills</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.0.6/dist/vue-multiselect.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <style>
+        [v-cloak] { display: none !important; }
+    </style>
+
+    <script src="https://unpkg.com/vue@2.5.6"></script>
+    <script src="https://unpkg.com/lodash@4.17.4"></script>
+    <script src="https://unpkg.com/clipboard-polyfill@2.3.0/build/clipboard-polyfill.js"></script>
+    <script src="https://unpkg.com/yamljs@0.3.0/dist/yaml.min.js"></script>
+    <script src="https://unpkg.com/axios@0.17.1/dist/axios.min.js"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">DDON Vocation Skills</a>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="mr-2">
+                <a style="color: #fff">
+                    Created by Seiyria Swaglin
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/seiyria/ddon-vocation-skills" target="_blank">
+                    <span class="fa fa-github" style="color: #fff"></span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="container mt-3" id="app">
+
+        <div v-cloak class="row mt-3" v-if="loading">
+            <div class="col">
+                <div class="alert alert-info">
+                    <i class="fa fa-spinner fa-spin"></i> Currently loading all vocation data...
+                </div>
+            </div>
+        </div>
+
+        <div v-cloak class="row mt-3" v-if="!loading">
+            <div class="col col-lg-2 col-md-3 col-sm-4 col-xs-6" v-for="vocation of allVocations">
+                    <button class="btn mt-1 w-100"
+                            :class="[selectedVocation === vocation.name ? 'btn-outline-' + vocation.color : 'btn-' + vocation.color]"
+                            :disabled="!vocationData[vocation.name]"
+                            @click="selectVocation(vocation.name)">{{ vocation.name }}</button>
+            </div>
+        </div>
+
+        <div v-cloak class="row mt-3" v-if="selectedVocation">
+            <div class="col">
+                <nav class="navbar navbar-dark bg-dark text-center">
+                    <a class="navbar-brand" href @click.prevent>{{ selectedVocation }}</a>
+                </nav>
+            </div>
+        </div>
+
+        <div v-cloak class="row mt-3" v-if="selectedVocation">
+            <div class="col">
+                <div class="form-check">
+                    <label class="form-check-label" for="baseSkills">
+                        <input class="form-check-input" type="checkbox" v-model="showData.baseSkills" id="baseSkills" />
+                        Show Base Skills
+                    </label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-check">
+                    <label class="form-check-label" for="unlockedSkills">
+                        <input class="form-check-input" type="checkbox" v-model="showData.unlockedSkills" id="unlockedSkills" />
+                        Show Unlocked Skills
+                    </label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-check">
+                    <label class="form-check-label" for="baseAugs">
+                        <input class="form-check-input" type="checkbox" v-model="showData.baseAugs" id="baseAugs" />
+                        Show Base Augments
+                    </label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-check">
+                    <label class="form-check-label" for="unlockedAugs">
+                        <input class="form-check-input" type="checkbox" v-model="showData.unlockedAugs" id="unlockedAugs" />
+                        Show Unlocked Augments
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div v-cloak class="row mt-3" v-if="selectedVocation && (showData.baseSkills || showData.unlockedSkills)">
+            <div class="col">
+                <nav class="navbar navbar-dark bg-dark text-center">
+                    <a class="navbar-brand" href @click.prevent>{{ selectedVocation }} Skills</a>
+                </nav>
+            </div>
+        </div>
+
+        <div v-cloak class="row mt-3" v-if="selectedVocation">
+            <div class="col">
+                <div class="row mb-3"
+                     v-if="(showData.baseSkills && !skill.unlock) || (showData.unlockedSkills && skill.unlock)"
+                     v-for="skill in vocationData[selectedVocation].skills">
+                    <div class="col">
+                        <div class="card" :id="selectedVocation + '-' + skill.name">
+                            <div class="card-header">
+                                <a href @click.prevent="selectSkill(skill.name)">Ability: {{ skill.name }} ~ Lv. {{ skill.levelRequirement }}</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5>Details</h5>
+                                        <p v-if="skill.castTime"><strong>Cast Time</strong>: {{ skill.castTime }} seconds</p>
+                                        <p>{{ skill.overview }}</p>
+                                        <h5>Levelup Details</h5>
+                                        <p v-if="skill.onEx"><strong>EX</strong>: {{ skill.onEx }}</p>
+                                        <p v-if="skill.onLevelUp"><strong>Every Level</strong>: {{ skill.onLevelUp }}</p>
+                                        <p v-if="skill.onLevelSix"><strong>At Level 6</strong>: {{ skill.onLevelSix }}</p>
+                                    </div>
+                                    <div class="col" v-if="skill.upgrades">
+                                        <h5>Level 7-10 Monster Hunt</h5>
+                                        <table class="table table-striped">
+                                            <tr v-for="level in [0, 1, 2, 3]">
+                                                <th>Level {{ level + 7 }}</th>
+                                                <td>
+                                                    <span v-if="!skill.upgrades[level]">???</span>
+                                                    <ul v-if="skill.upgrades[level]" class="mb-0">
+                                                        <li v-for="upgrade of skill.upgrades[level].monsters">
+                                                            {{ upgrade.name }} ~ Lv. {{ upgrade.level }} ({{ upgrade.qty }})
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer" v-if="skill.unlock">
+                                <div class="row">
+                                    <div class="col">
+                                        <i class="fa fa-key"></i> Unlocked By: {{ skill.unlock }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div v-cloak class="row mt-3" v-if="selectedVocation && (showData.baseAugs || showData.unlockedAugs)">
+            <div class="col">
+                <nav class="navbar navbar-dark bg-dark text-center">
+                    <a class="navbar-brand" href @click.prevent>{{ selectedVocation }} Augments</a>
+                </nav>
+            </div>
+        </div>
+
+        <div v-cloak class="row mt-3" v-if="selectedVocation">
+            <div class="col">
+                <div class="row mb-3"
+                     v-if="(showData.baseAugs && !skill.unlock) || (showData.unlockedAugs && skill.unlock)"
+                     v-for="skill in vocationData[selectedVocation].augments">
+                    <div class="col">
+                        <div class="card" :id="selectedVocation + '-' + skill.name">
+                            <div class="card-header">
+                                <a href @click.prevent="selectSkill(skill.name)">Augment: {{ skill.name }} ~ Lv. {{ skill.levelRequirement }}</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5>Details</h5>
+                                        <p><strong>AP Cost</strong>: {{ skill.apCost }}</p>
+                                        <p>{{ skill.overview }}</p>
+                                        <h5>Levelup Details</h5>
+                                        <p><strong>Every Level</strong>: {{ skill.onLevelUp }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <h5>Level 5-6 Monster Hunt</h5>
+                                        <table class="table table-striped">
+                                            <tr v-for="level in [0, 1]">
+                                                <th>Level {{ level + 5 }}</th>
+                                                <td>
+                                                    <span v-if="!skill.upgrades[level]">???</span>
+                                                    <ul v-if="skill.upgrades[level]" class="mb-0">
+                                                        <li v-for="upgrade of skill.upgrades[level].monsters">
+                                                            {{ upgrade.name }} ~ Lv. {{ upgrade.level }} ({{ upgrade.qty }})
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <h5 v-if="skill.statUpgradesPerLevel">Stat Upgrades Per Level</h5>
+                                        <table v-if="skill.statUpgradesPerLevel" class="table table-striped">
+                                            <tr v-for="(upgrade, index) in skill.statUpgradesPerLevel">
+                                                <th>Level {{ index+ 1 }}</th>
+                                                <td>{{ upgrade }}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer" v-if="skill.unlock || skill.dragonJewelry">
+                                <div class="row">
+                                    <div class="col" v-if="skill.unlock">
+                                        <i class="fa fa-key"></i> Unlocked By: {{ skill.unlock }}
+                                    </div>
+
+                                    <div class="col" v-if="skill.dragonJewelry">
+                                        <i class="fa fa-star"></i> {{ skill.dragonJewelry }} ~ Max Lv. {{ skill.dragonJewelryMax }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div v-cloak class="row mt-3" v-if="!loading && !selectedVocation">
+            <div class="col">
+                <div class="alert alert-info">
+                    Select a vocation to see its skills.
+                </div>
+            </div>
+        </div>
+
+        <div v-cloak class="row mt-3" v-if="!selectedVocation && neededData.length > 0">
+            <div class="col">
+                <div class="alert alert-info">
+                    Hey! If you happen to have info on any of the following pieces of information, please send a monster list to Seiyria#3457 on discord or <a target="_blank" href="mailto:ddon@seiyria.com">ddon@seiyria.com</a>. Thanks!
+
+                    <br><br>
+
+                    <ul>
+                        <li v-for="data in neededData">{{ data }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="index.js"></script>
+</body>
+</html>

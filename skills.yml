@@ -1,0 +1,494 @@
+
+Sorcerer:
+  skills:
+  - name: Fire Storm
+    levelRequirement: 1
+    overview: After charging, sprays a stream of fire from left to right.
+    onLevelUp: Power+
+    castTime: 5
+    onLevelSix: Streams a second wave by tapping the attack button during the first wave.
+    upgrades:
+    - upgradeLevel: 6
+      monsters:
+      - name: Rogue Mage
+        level: 5
+        qty: 20
+    - upgradeLevel: 7
+      monsters:
+      - name: Brute Ape
+        level: 10
+        qty: 20
+    - upgradeLevel: 8
+      monsters:
+      - name: Giant Saurian
+        level: 15
+        qty: 10
+      - name: Saurian
+        level: 15
+        qty: 30
+    - upgradeLevel: 9
+      monsters:
+      - name: Mudman
+        level: 10
+        qty: 30
+      - name: Slime
+        level: 1
+        qty: 60
+    - upgradeLevel: 10
+      monsters:
+      - name: Wight
+        level: 15
+        qty: 20
+
+  - name: Fulmination
+    levelRequirement: 3
+    overview: After charging, lightning emanates outward from you dealing light damage with decent hitstun.
+    onLevelUp: Power+
+    castTime: 1
+    onLevelSix: Range+
+    upgrades: []
+
+  - name: Black Haze
+    levelRequirement: 6
+    overview: After charging, release a mist of darkness that attaches to the first enemy touched, dealing damage over time.
+    onLevelUp: Power+
+    castTime: 5
+    onLevelSix: DoT Duration+
+    upgrades: []
+
+  - name: Frigor
+    levelRequirement: 6
+    overview: After charging, summon an Ice spike that impales upward through the ground towards the target locked position.
+    onLevelUp: Power+
+    castTime: 5
+    onLevelSix: Does AoE damage
+    upgrades: []
+
+  - name: Comestion
+    levelRequirement: 13
+    overview: After charging, summons three fields in a horiztonal pattern that then burst into flames.
+    onLevelUp: Power+
+    castTime: 5
+    onLevelSix: Range+
+    upgrades: []
+
+  - name: Crescent Blade
+    levelRequirement: 13
+    overview: After charging, release a blade-shaped shock wave forward that deals massive lightning and slashing damage. Travels a long range extremely fast but is very thin.
+    onLevelUp: Power+
+    castTime: 19
+    onLevelSix: Shockwave splits into 3 directions
+    upgrades: []
+
+  - name: Seism
+    levelRequirement: 20
+    overview: After charging, summon a boulder upward from the ground that deals a mix of Dark and Striking damage.
+    onLevelUp: Power+
+    castTime: 19
+    onLevelSix: Rocks 1->2
+    upgrades: []
+
+  - name: Bolide
+    levelRequirement: 25
+    overview: After charging, 4 meteors fall near the location targeted, dealing massive fire damage with good AoE.
+    onLevelUp: Power+
+    castTime: 19
+    onLevelSix: Meteors 4->7
+    upgrades: []
+
+  - name: Levin
+    levelRequirement: 30
+    overview: After charging, lightning strikes down 3 times at the targeted location.
+    onLevelUp: Power+
+    castTime: 10
+    onLevelSix: Bolts 3->5
+    upgrades: []
+
+  - name: Darkness Mist
+    levelRequirement: 30
+    overview: After charging, summon a thick dark fog overhead that deals continuous damage to enemies inside.
+    onLevelUp: Power+
+    castTime: 10
+    onLevelSix: Range+
+    upgrades: []
+
+  - name: Gicel
+    levelRequirement: 35
+    overview: After charging, conjure multiple ice spikes that thurst enemies.
+    onLevelUp: Power+
+    castTime: 10
+    onLevelSix: Range+, +2 Ice Spikes
+    upgrades: []
+
+  - name: Prominent Sphere
+    levelRequirement: 45
+    overview: After charging, conjure a magical sphere with adjustable range that deals damage to enemies inside. Damage is inversely proportional to sphere's size.
+    onLevelUp: Power+
+    castTime: 25
+    onLevelSix: Range+
+    unlock: Kill Golgorran
+    upgrades: []
+
+  - name: Icicle Pierce
+    levelRequirement: 40
+    overview: Summon a big snowflake behind Sorcerer that allow to shoot a series of three very fast but weak ice spikes or one powerful charged spike that also creates a freezing sphere damaging over time.
+    onLevelUp: Power+
+    castTime: 5
+    onLevelSix: Spikes 30->51
+    unlock: Blood Orb Tree
+    upgrades: []
+
+  - name: Lightning Stake
+    levelRequirement: 40
+    overview: Places a large orb of lightning on the ground. The button can be used again to channel lightning towards it, causing it to emanate lightning in an area around it, inflicting rapid damage. The lightning channeled towards the orb inflicts damage as well.
+    onLevelUp: Stamina Drain-
+    castTime: 5
+    onLevelSix: Power+, Hits+
+    unlock: Blood Orb Tree
+    upgrades: []
+
+  - name: Darkness Mist: Technique (EX)
+    levelRequirement: 0
+    overview: After charging, summon a thick dark fog overhead that deals continuous damage to enemies inside.
+    onEx: Add Poison and Sleep debuffs.
+    castTime: 10
+    unlock: Blood Orb Tree
+
+  - name: Darkness Mist: Rigid (EX)
+    levelRequirement: 0
+    overview: After charging, summon a thick dark fog overhead that deals continuous damage to enemies inside.
+    onEx: Increases damage in center of mist. Increases damage dealt to Demi-Humans, Demons and Giants.
+    castTime: 10
+    unlock: Blood Orb Tree
+
+  augments:
+  - name: Break Formation
+    levelRequirement: 3
+    overview: Increases the Blow Power of Magic Trap.
+    onLevelUp: Blow Power+
+    dragonJewelry: Dragon Appraisal Jewelry (Sorcerer)
+    dragonJewelryMax: 6
+    apCost: 2
+    upgrades:
+    - upgradeLevel: 5
+      monsters:
+      - name: Skeleton
+        level: 10
+        qty: 30
+    - upgradeLevel: 6
+      monsters:
+      - name: Giant Saurian
+        level: 10
+        qty: 20
+
+  - name: Comfortable Glide
+    levelRequirement: 9
+    overview: Use less stamina while using Levitate.
+    onLevelUp: Stamina Drain-
+    apCost: 3
+    upgrades: []
+
+  - name: Equanimity
+    levelRequirement: 13
+    overview: When in a dying state (<15% HP), Magick goes up.
+    onLevelUp: Magick+
+    apCost: 8
+    statUpgradesPerLevel:
+      - Magick +15
+      - Magick +23
+      - Magick +31
+      - Magick +39
+      - Magick +47
+      - Magick +55
+    upgrades: []
+
+  - name: Continued Chant
+    levelRequirement: 13
+    overview: Allows Back Move while casting a spell. Continue casting, but suffer a setback to casting time and chanting multiplier based on passive level.
+    onLevelUp: Chant Gauge Penalty-
+    dragonJewelry: Dragon Appraisal Jewelry (Sorcerer)
+    dragonJewelryMax: 6
+    apCost: 7
+    upgrades: []
+
+  - name: Flame Aggression
+    levelRequirement: 20
+    overview: Fire attacks deal more damage.
+    onLevelUp: Damage+ (~4% / lvl)
+    dragonJewelry: Flower Appraisal Jewelry
+    dragonJewelryMax: 3
+    apCost: 4
+    upgrades: []
+
+  - name: Ice Aggression
+    levelRequirement: 20
+    overview: Ice attacks deal more damage.
+    onLevelUp: Damage+ (~4% / lvl)
+    dragonJewelry: Moon Appraisal Jewelry
+    dragonJewelryMax: 3
+    apCost: 4
+    upgrades: []
+
+  - name: Thunder Aggression
+    levelRequirement: 20
+    overview: Thunder attacks deal more damage.
+    onLevelUp: Damage+ (~4% / lvl)
+    dragonJewelry: Wind Appraisal Jewelry
+    dragonJewelryMax: 3
+    apCost: 5
+    upgrades: []
+
+  - name: Demon Proficiency
+    levelRequirement: 20
+    overview: Deal more damage to demons.
+    onLevelUp: Damage+
+    apCost: 6
+    upgrades: []
+
+  - name: Cursed Proficiency
+    levelRequirement: 25
+    overview: Deal more damage to cursed enemies.
+    onLevelUp: Damage+
+    apCost: 7
+    upgrades: []
+
+  - name: Demon Safeguard
+    levelRequirement: 30
+    overview: Take less damage from demons.
+    onLevelUp: Damage Taken-
+    apCost: 4
+    upgrades: []
+
+  - name: Cursed Safeguard
+    levelRequirement: 30
+    overview: Take less damage from cursed enemies.
+    onLevelUp: Damage Taken-
+    apCost: 4
+    upgrades: []
+
+  - name: Spirit Chant
+    levelRequirement: 33
+    overview: Stamina recovers after a successful spell input.
+    onLevelUp: Stamina Restored+
+    dragonJewelry: Dragon Appraisal Jewelry (Sorcerer)
+    dragonJewelryMax: 6
+    apCost: 7
+    upgrades: []
+
+  - name: Graceful Chant
+    levelRequirement: 33
+    overview: Lowers the difficulty of doing chanting inputs, making it easier to increase the magic's damage multiplier..
+    onLevelUp: Difficulty-
+    dragonJewelry: Dragon Appraisal Jewelry (Sorcerer)
+    dragonJewelryMax: 6
+    apCost: 9
+    upgrades: []
+
+  - name: Darkness Aggression
+    levelRequirement: 35
+    overview: Dark attacks deal more damage.
+    onLevelUp: Damage+ (~4% / lvl)
+    dragonJewelry: Moon Appraisal Jewelry
+    dragonJewelryMax: 3
+    apCost: 5
+    upgrades: []
+
+  - name: Clear Mind
+    levelRequirement: 35
+    overview: When in a healthy state (>85% HP), Magick goes up.
+    onLevelUp: Magick+
+    apCost: 8
+    statUpgradesPerLevel:
+      - Magick +10
+      - Magick +15
+      - Magick +20
+      - Magick +25
+      - Magick +30
+      - Magick +35
+    upgrades: []
+
+  - name: Continued Glide
+    levelRequirement: 35
+    overview: Levitation time is increased.
+    onLevelUp: Levitation Time+
+    apCost: 4
+    upgrades: []
+
+  - name: Human Safeguard
+    levelRequirement: 30
+    overview: Take less damage from human enemies.
+    onLevelUp: Damage Taken-
+    apCost: 7
+    upgrades: []
+
+  - name: Holy Aggression
+    levelRequirement: 40
+    overview: Light attacks deal more damage.
+    onLevelUp: Damage+ (~4% / lvl)
+    dragonJewelry: Wind Appraisal Jewelry
+    dragonJewelryMax: 3
+    apCost: 5
+    upgrades: []
+
+  - name: Demon Booster
+    levelRequirement: 40
+    overview: When in a healthy state (>85% HP), Magick goes up.
+    onLevelUp: Magick+
+    apCost: 10
+    statUpgradesPerLevel:
+      - Magick +5
+      - Magick +7
+      - Magick +9
+      - Magick +11
+      - Magick +13
+      - Magick +15
+    upgrades: []
+
+  - name: Magic Cover
+    levelRequirement: 40
+    overview: Less likely to be interrupted while casting.
+    onLevelUp: Interrupt Chance-
+    apCost: 6
+    upgrades: []
+
+  - name: Wrath
+    levelRequirement: 40
+    overview: Less likely to receive the debuff "Magic Attack Down".
+    onLevelUp: Debuff Chance-
+    apCost: 3
+    upgrades: []
+
+  - name: Devil Delicacy
+    levelRequirement: 45
+    overview: Recover stamina while chanting.
+    onLevelUp: Stamina Gain+
+    dragonJewelry: Dragon Appraisal Jewelry (Sorcerer)
+    dragonJewelryMax: 6
+    apCost: 10
+    upgrades: []
+
+  - name: Witch
+    levelRequirement: 45
+    overview: Increase Magick.
+    onLevelUp: Magick+
+    dragonJewelry: Star Appraisal Jewelry
+    dragonJewelryMax: 3
+    statUpgradesPerLevel:
+      - Magick +5
+      - Magick +7
+      - Magick +9
+      - Magick +11
+      - Magick +13
+      - Magick +15
+    apCost: 15
+    upgrades: []
+
+  - name: Chorus
+    levelRequirement: 45
+    overview: Decrease damage taken while chanting.
+    onLevelUp: Damage Taken-
+    apCost: 9
+    upgrades: []
+
+  - name: Human Proficiency
+    levelRequirement: 45
+    overview: Deal more damage to human enemies.
+    onLevelUp: Damage+
+    apCost: 9
+    upgrades: []
+
+  - name: Magick Bolt: Slayer
+    levelRequirement: 0
+    overview: Increases the damage of Magic Bolts.
+    onLevelUp: Damage+, Blow Power+
+    apCost: 3
+    unlock: Blood Orb Tree
+    upgrades: []
+
+  - name: Magick Trap: Crusher
+    levelRequirement: 0
+    overview: Increases the damage of Magic Trap.
+    onLevelUp: Damage+, Stagger Power+, Exhaust Attack Power+
+    apCost: 2
+    unlock: Blood Orb Tree
+    upgrades: []
+
+  - name: Magick Cracker: Slayer
+    levelRequirement: 0
+    overview: Increases the damage of Magic Cracker.
+    onLevelUp: Damage+, Stagger Power+
+    apCost: 2
+    unlock: Blood Orb Tree
+    upgrades: []
+
+  - name: Enduring Levitation
+    levelRequirement: 0
+    overview: Increases Defense and Magic Defense while levitating.
+    onLevelUp: Defense+, Magic Defense+
+    apCost: 3
+    unlock: Blood Orb Tree
+    upgrades: []
+
+  - name: Magick Cracker: Smasher
+    levelRequirement: 0
+    overview: Increases the damage of Magic Cracker.
+    onLevelUp: Damage+, Stagger Power+
+    apCost: 2
+    unlock: Blood Orb Tree
+    upgrades: []
+
+  - name: Collapsing Strength
+    levelRequirement: 0
+    overview: Increases Blow Power.
+    onLevelUp: Blow Power+
+    apCost: 4
+    unlock: Blood Orb Tree
+    upgrades: []
+
+  - name: Magick Bolt: Crusher
+    levelRequirement: 0
+    overview: Increases the damage of Magic Bolts.
+    onLevelUp: Damage+, Blow Power+, Stagger Power+
+    apCost: 3
+    unlock: Blood Orb Tree
+    upgrades: []
+
+  - name: Magick Trap: Duration
+    levelRequirement: 0
+    overview: Increases the damage of Magic Trap.
+    onLevelUp: Damage+, Duration+
+    apCost: 2
+    unlock: Blood Orb Tree
+    upgrades: []
+
+  - name: Magick Cracker: Singer
+    levelRequirement: 0
+    overview: Increases the damage of Magic Cracker.
+    onLevelUp: Damage+, Cast Speed-
+    apCost: 2
+    unlock: Blood Orb Tree
+    upgrades: []
+
+  - name: Reduction
+    levelRequirement: 0
+    overview: Less likely to get debuffs.
+    onLevelUp: Debuff Chance-
+    apCost: 5
+    unlock: Blood Orb Tree
+    upgrades: []
+
+  - name: Magick Trap: Singer
+    levelRequirement: 0
+    overview: Increases the damage of Magic Trap.
+    onLevelUp: Damage+, Cast Speed-
+    apCost: 2
+    unlock: Blood Orb Tree
+    upgrades: []
+
+  - name: Pleasant Drift
+    levelRequirement: 0
+    overview: Reduce stamina consumption of Back Move.
+    onLevelUp: Stamina Consumption-
+    apCost: 2
+    unlock: Blood Orb Tree
+    upgrades: []
