@@ -546,7 +546,7 @@ Sorcerer:
     overview: Increases the damage of Magic Bolts.
     onLevelUp: Damage+, Blow Power+
     apCost: 3
-    unlock: Sorcer Blood Orb Tree
+    unlock: Sorcerer Blood Orb Tree
     upgrades: []
 
   - name: Magick Trap: Crusher
@@ -554,7 +554,7 @@ Sorcerer:
     overview: Increases the damage of Magic Trap.
     onLevelUp: Damage+, Stagger Power+, Exhaust Attack Power+
     apCost: 2
-    unlock: Sorcer Blood Orb Tree
+    unlock: Sorcerer Blood Orb Tree
     upgrades: []
 
   - name: Magick Cracker: Slayer
@@ -562,7 +562,7 @@ Sorcerer:
     overview: Increases the damage of Magic Cracker.
     onLevelUp: Damage+, Stagger Power+
     apCost: 2
-    unlock: Sorcer Blood Orb Tree
+    unlock: Sorcerer Blood Orb Tree
     upgrades: []
 
   - name: Enduring Levitation
@@ -570,7 +570,7 @@ Sorcerer:
     overview: Increases Defense and Magic Defense while levitating.
     onLevelUp: Defense+, Magic Defense+
     apCost: 3
-    unlock: Sorcer Blood Orb Tree
+    unlock: Sorcerer Blood Orb Tree
     upgrades: []
 
   - name: Magick Cracker: Smasher
@@ -578,7 +578,7 @@ Sorcerer:
     overview: Increases the damage of Magic Cracker.
     onLevelUp: Damage+, Stagger Power+
     apCost: 2
-    unlock: Sorcer Blood Orb Tree
+    unlock: Sorcerer Blood Orb Tree
     upgrades: []
 
   - name: Collapsing Strength
@@ -586,7 +586,7 @@ Sorcerer:
     overview: Increases Blow Power.
     onLevelUp: Blow Power+
     apCost: 4
-    unlock: Sorcer Blood Orb Tree
+    unlock: Sorcerer Blood Orb Tree
     upgrades: []
 
   - name: Magick Bolt: Crusher
@@ -594,7 +594,7 @@ Sorcerer:
     overview: Increases the damage of Magic Bolts.
     onLevelUp: Damage+, Blow Power+, Stagger Power+
     apCost: 3
-    unlock: Sorcer Blood Orb Tree
+    unlock: Sorcerer Blood Orb Tree
     upgrades: []
 
   - name: Magick Trap: Duration
@@ -602,7 +602,7 @@ Sorcerer:
     overview: Increases the damage of Magic Trap.
     onLevelUp: Damage+, Duration+
     apCost: 2
-    unlock: Sorcer Blood Orb Tree
+    unlock: Sorcerer Blood Orb Tree
     upgrades: []
 
   - name: Magick Cracker: Singer
@@ -610,7 +610,7 @@ Sorcerer:
     overview: Increases the damage of Magic Cracker.
     onLevelUp: Damage+, Cast Speed-
     apCost: 2
-    unlock: Sorcer Blood Orb Tree
+    unlock: Sorcerer Blood Orb Tree
     upgrades: []
 
   - name: Reduction
