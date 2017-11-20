@@ -4,15 +4,10 @@ Sorcerer:
   - name: Fire Storm
     levelRequirement: 1
     overview: After charging, sprays a stream of fire from left to right.
-    onLevelUp: Power+
-    castTime: 5
+    onLevelUp: Damage further increases.
+    castTime: 3.36s
     onLevelSix: Streams a second wave by tapping the attack button during the first wave.
     upgrades:
-    - upgradeLevel: 6
-      monsters:
-      - name: Rogue Mage
-        level: 5
-        qty: 20
     - upgradeLevel: 7
       monsters:
       - name: Brute Ape
@@ -43,58 +38,207 @@ Sorcerer:
   - name: Fulmination
     levelRequirement: 3
     overview: After charging, lightning emanates outward from you dealing light damage with decent hitstun.
-    onLevelUp: Power+
-    castTime: 1
-    onLevelSix: Range+
-    upgrades: []
+    onLevelUp: Damage further increases.
+    castTime: 1.12s
+    onLevelSix: Blast range increases.
+    upgrades:
+    - upgradeLevel: 7
+      monsters:
+      - name: Shield Goblin
+        level: 5
+        qty: 30
+    - upgradeLevel: 8
+      monsters:
+      - name: Forest Goblin
+        level: 10
+        qty: 50
+    - upgradeLevel: 9
+      monsters:
+      - name: Blood Orb Enemies
+        level: 10
+        qty: 30
+    - upgradeLevel: 10
+      monsters:
+      - name: Chimera
+        level: 20
+        qty: 5
 
   - name: Black Haze
     levelRequirement: 6
     overview: After charging, release a mist of darkness that attaches to the first enemy touched, dealing damage over time.
-    onLevelUp: Power+
-    castTime: 5
-    onLevelSix: DoT Duration+
-    upgrades: []
+    onLevelUp: Damage further increases.
+    castTime: 3.04s
+    onLevelSix: Duration of the skill increases. Number of hits increases.
+    upgrades:
+    - upgradeLevel: 7
+      monsters:
+      - name: Mudman
+        level: 10
+        qty: 30
+    - upgradeLevel: 8 
+      monsters: 
+      - name: Hobgoblin
+        level: 15
+        qty: 20
+      - name: Goblin Bomber
+        level: 20
+        qty: 20
+    - upgradeLevel: 9
+      monsters:
+      - name: Dread Ape
+        level: 15
+        qty: 10
+    - upgradeLevel: 10
+      monsters:
+      - name: Cyclops
+        level: 15
+        qty: 18
 
   - name: Frigor
     levelRequirement: 6
-    overview: After charging, summon an Ice spike that impales upward through the ground towards the target locked position.
-    onLevelUp: Power+
-    castTime: 5
-    onLevelSix: Does AoE damage
-    upgrades: []
+    overview: After charging, summon a pillar of ice at the enemy's feet.
+    onLevelUp: Damage further increase.
+    castTime: 7s
+    onLevelSix: Add an additional hit at the start at the start of the spell.
+    upgrades: 
+    - upgradeLevel: 7
+      monsters:
+      - name: Skeleton Mage
+        level: 15
+        qty: 30
+    - upgradeLevel: 8
+      monsters:
+      - name: Alchemized Skeleton
+        level: 15
+        qty: 25
+    - upgradeLevel: 9
+      monsters:
+      - name: Wight
+        level: 15
+        qty: 20
+    - upgradeLevel: 10
+      monsters:
+      - name: Sphinx
+        level: 20
+        qty: 12
 
   - name: Comestion
     levelRequirement: 13
-    overview: After charging, summons three fields in a horiztonal pattern that then burst into flames.
-    onLevelUp: Power+
-    castTime: 5
-    onLevelSix: Range+
-    upgrades: []
+    overview: After charging, summons a tower wall of flame.
+    onLevelUp: Damage further increases.
+    castTime: 7s
+    onLevelSix: The range of the effect further increases.
+    upgrades: 
+    - upgradeLevel: 7
+      monsters:
+      - name: Orc Soldier
+        level: 10
+        qty: 30
+    - upgradeLevel: 8
+      monsters:
+      - name: Rock Saurian
+        level: 20
+        qty: 30
+      - name: Rock Saurian Spinel
+        level: 20
+        qty: 5
+    - upgradeLevel: 9
+      monsters:
+      - name: Dread Ape
+        level: 15
+        qty: 12
+    - upgradeLevel: 10
+      monsters:
+      - name: Ogre
+        level: 20
+        qty: 10
 
   - name: Crescent Blade
     levelRequirement: 13
-    overview: After charging, release a blade-shaped shock wave forward that deals massive lightning and slashing damage. Travels a long range extremely fast but is very thin.
-    onLevelUp: Power+
-    castTime: 19
-    onLevelSix: Shockwave splits into 3 directions
-    upgrades: []
+    overview: After charging, release a blade-shaped shock wave forward that deals massive lightning and slashing damage. Travels a long range, extremely fast but is very thin.
+    onLevelUp: Damage further increase.
+    castTime: 17s
+    onLevelSix: Shockwave will fire in 3 directions.
+    upgrades: 
+    - upgradeLevel: 7
+      monsters:
+      - name: Redcap
+        level: 20
+        qty: 30
+    - upgradeLevel: 8
+      monsters:
+      - name: Cyclops
+        level: 20
+        qty: 10
+    - upgradeLevel: 9
+      monsters:
+      - name: Ogre
+        level: 25
+        qty: 12
+    - upgradeLevel: 10
+      monsters:
+      - name: Golem
+        level: 30
+        qty: 10
 
   - name: Seism
     levelRequirement: 20
-    overview: After charging, summon a boulder upward from the ground that deals a mix of Dark and Striking damage.
-    onLevelUp: Power+
-    castTime: 19
-    onLevelSix: Rocks 1->2
-    upgrades: []
+    overview: After charging, summon a boulder upward from the ground that deals a mix of Dark and Impact attribute.
+    onLevelUp: Damage further increases.
+    castTime: 19s
+    onLevelSix: Number of rock increases from 1->2.
+    upgrades: 
+    - upgradeLevel: 7
+      monsters:
+      - name: Troll
+        level: 20
+        qty: 10
+    - upgradeLevel: 8
+      monsters:
+      - name: Orc Aimer
+        level: 30
+        qty: 30
+      - name: Captain Orc
+        level: 30
+        qty: 10
+    - upgradeLevel: 9
+      monsters:
+      - name: Sphinx
+        level: 20
+        qty: 10
+    - upgradeLevel: 10
+      monsters:
+      - name: Behemoth
+        level: 35
+        qty: 3
 
   - name: Bolide
     levelRequirement: 25
-    overview: After charging, 4 meteors fall near the location targeted, dealing massive fire damage with good AoE.
-    onLevelUp: Power+
-    castTime: 19
-    onLevelSix: Meteors 4->7
-    upgrades: []
+    overview: After charging, summon a storm of meteor to fall down on the enemy.
+    onLevelUp: Damage further increases.
+    castTime: 19s
+    onLevelSix: Number of meteor increases from 4->7.
+    upgrades: 
+    - upgradeLevel: 7
+      monsters:
+      - name: Chimera
+        level: 30
+        qty: 8
+    - upgradeLevel: 8
+      monsters:
+      - name: Colossus
+        level: 30
+        qty: 10
+    - upgradeLevel: 9
+      monsters:
+      - name: Lindwurm
+        level: 30
+        qty: 10
+    - upgradeLevel: 10
+      monsters:
+      - name: Elder Dragon
+        level: 40
+        qty: 10
 
   - name: Levin
     levelRequirement: 30
