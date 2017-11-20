@@ -279,7 +279,7 @@ Sorcerer:
     onLevelUp: Power+
     castTime: 5
     onLevelSix: Spikes 30->51
-    unlock: Blood Orb Tree
+    unlock: Sorcerer Blood Orb Tree
     upgrades: []
 
   - name: Lightning Stake
@@ -288,7 +288,7 @@ Sorcerer:
     onLevelUp: Stamina Drain-
     castTime: 5
     onLevelSix: Power+, Hits+
-    unlock: Blood Orb Tree
+    unlock: Sorcerer Blood Orb Tree
     upgrades: []
 
   - name: Darkness Mist: Technique (EX)
@@ -296,14 +296,14 @@ Sorcerer:
     overview: After charging, summon a thick dark fog overhead that deals continuous damage to enemies inside.
     onEx: Add Poison and Sleep debuffs.
     castTime: 10
-    unlock: Blood Orb Tree
+    unlock: Sorcerer High Orb Tree
 
   - name: Darkness Mist: Rigid (EX)
     levelRequirement: 0
     overview: After charging, summon a thick dark fog overhead that deals continuous damage to enemies inside.
     onEx: Increases damage in center of mist. Increases damage dealt to Demi-Humans, Demons and Giants.
     castTime: 10
-    unlock: Blood Orb Tree
+    unlock: Sorcerer High Orb Tree
 
   augments:
   - name: Break Formation
@@ -325,7 +325,7 @@ Sorcerer:
         level: 10
         qty: 20
 
-  - name: Comfortable Glide
+  - name: Comfortable Levitate
     levelRequirement: 9
     overview: Use less stamina while using Levitate.
     onLevelUp: Stamina Drain-
@@ -355,7 +355,7 @@ Sorcerer:
     apCost: 7
     upgrades: []
 
-  - name: Flame Aggression
+  - name: Fire Attack
     levelRequirement: 20
     overview: Fire attacks deal more damage.
     onLevelUp: Damage+ (~4% / lvl)
@@ -364,7 +364,7 @@ Sorcerer:
     apCost: 4
     upgrades: []
 
-  - name: Ice Aggression
+  - name: Ice Attack
     levelRequirement: 20
     overview: Ice attacks deal more damage.
     onLevelUp: Damage+ (~4% / lvl)
@@ -373,7 +373,7 @@ Sorcerer:
     apCost: 4
     upgrades: []
 
-  - name: Thunder Aggression
+  - name: Thunder Attack
     levelRequirement: 20
     overview: Thunder attacks deal more damage.
     onLevelUp: Damage+ (~4% / lvl)
@@ -428,7 +428,7 @@ Sorcerer:
     apCost: 9
     upgrades: []
 
-  - name: Darkness Aggression
+  - name: Dark Attack
     levelRequirement: 35
     overview: Dark attacks deal more damage.
     onLevelUp: Damage+ (~4% / lvl)
@@ -437,7 +437,7 @@ Sorcerer:
     apCost: 5
     upgrades: []
 
-  - name: Clear Mind
+  - name: Calmness
     levelRequirement: 35
     overview: When in a healthy state (>85% HP), Magick goes up.
     onLevelUp: Magick+
@@ -451,7 +451,7 @@ Sorcerer:
       - Magick +35
     upgrades: []
 
-  - name: Continued Glide
+  - name: Extended Levitate
     levelRequirement: 35
     overview: Levitation time is increased.
     onLevelUp: Levitation Time+
@@ -465,7 +465,7 @@ Sorcerer:
     apCost: 7
     upgrades: []
 
-  - name: Holy Aggression
+  - name: Holy Attack
     levelRequirement: 40
     overview: Light attacks deal more damage.
     onLevelUp: Damage+ (~4% / lvl)
@@ -474,7 +474,7 @@ Sorcerer:
     apCost: 5
     upgrades: []
 
-  - name: Demon Booster
+  - name: Magic Boost
     levelRequirement: 40
     overview: When in a healthy state (>85% HP), Magick goes up.
     onLevelUp: Magick+
@@ -488,21 +488,21 @@ Sorcerer:
       - Magick +15
     upgrades: []
 
-  - name: Magic Cover
+  - name: Persistent Cast
     levelRequirement: 40
     overview: Less likely to be interrupted while casting.
     onLevelUp: Interrupt Chance-
     apCost: 6
     upgrades: []
 
-  - name: Wrath
+  - name: Ignore Intimidation
     levelRequirement: 40
     overview: Less likely to receive the debuff "Magic Attack Down".
     onLevelUp: Debuff Chance-
     apCost: 3
     upgrades: []
 
-  - name: Devil Delicacy
+  - name: Magick Energy
     levelRequirement: 45
     overview: Recover stamina while chanting.
     onLevelUp: Stamina Gain+
@@ -511,7 +511,7 @@ Sorcerer:
     apCost: 10
     upgrades: []
 
-  - name: Witch
+  - name: Twin Magick
     levelRequirement: 45
     overview: Increase Magick.
     onLevelUp: Magick+
@@ -527,7 +527,7 @@ Sorcerer:
     apCost: 15
     upgrades: []
 
-  - name: Chorus
+  - name: Courageous Cast
     levelRequirement: 45
     overview: Decrease damage taken while chanting.
     onLevelUp: Damage Taken-
@@ -546,7 +546,7 @@ Sorcerer:
     overview: Increases the damage of Magic Bolts.
     onLevelUp: Damage+, Blow Power+
     apCost: 3
-    unlock: Blood Orb Tree
+    unlock: Sorcer Blood Orb Tree
     upgrades: []
 
   - name: Magick Trap: Crusher
@@ -554,7 +554,7 @@ Sorcerer:
     overview: Increases the damage of Magic Trap.
     onLevelUp: Damage+, Stagger Power+, Exhaust Attack Power+
     apCost: 2
-    unlock: Blood Orb Tree
+    unlock: Sorcer Blood Orb Tree
     upgrades: []
 
   - name: Magick Cracker: Slayer
@@ -562,7 +562,7 @@ Sorcerer:
     overview: Increases the damage of Magic Cracker.
     onLevelUp: Damage+, Stagger Power+
     apCost: 2
-    unlock: Blood Orb Tree
+    unlock: Sorcer Blood Orb Tree
     upgrades: []
 
   - name: Enduring Levitation
@@ -570,7 +570,7 @@ Sorcerer:
     overview: Increases Defense and Magic Defense while levitating.
     onLevelUp: Defense+, Magic Defense+
     apCost: 3
-    unlock: Blood Orb Tree
+    unlock: Sorcer Blood Orb Tree
     upgrades: []
 
   - name: Magick Cracker: Smasher
@@ -578,7 +578,7 @@ Sorcerer:
     overview: Increases the damage of Magic Cracker.
     onLevelUp: Damage+, Stagger Power+
     apCost: 2
-    unlock: Blood Orb Tree
+    unlock: Sorcer Blood Orb Tree
     upgrades: []
 
   - name: Collapsing Strength
@@ -586,7 +586,7 @@ Sorcerer:
     overview: Increases Blow Power.
     onLevelUp: Blow Power+
     apCost: 4
-    unlock: Blood Orb Tree
+    unlock: Sorcer Blood Orb Tree
     upgrades: []
 
   - name: Magick Bolt: Crusher
@@ -594,7 +594,7 @@ Sorcerer:
     overview: Increases the damage of Magic Bolts.
     onLevelUp: Damage+, Blow Power+, Stagger Power+
     apCost: 3
-    unlock: Blood Orb Tree
+    unlock: Sorcer Blood Orb Tree
     upgrades: []
 
   - name: Magick Trap: Duration
@@ -602,7 +602,7 @@ Sorcerer:
     overview: Increases the damage of Magic Trap.
     onLevelUp: Damage+, Duration+
     apCost: 2
-    unlock: Blood Orb Tree
+    unlock: Sorcer Blood Orb Tree
     upgrades: []
 
   - name: Magick Cracker: Singer
@@ -610,7 +610,7 @@ Sorcerer:
     overview: Increases the damage of Magic Cracker.
     onLevelUp: Damage+, Cast Speed-
     apCost: 2
-    unlock: Blood Orb Tree
+    unlock: Sorcer Blood Orb Tree
     upgrades: []
 
   - name: Reduction
@@ -618,7 +618,7 @@ Sorcerer:
     overview: Less likely to get debuffs.
     onLevelUp: Debuff Chance-
     apCost: 5
-    unlock: Blood Orb Tree
+    unlock: Sorcerer Blood Orb Tree
     upgrades: []
 
   - name: Magick Trap: Singer
@@ -626,7 +626,7 @@ Sorcerer:
     overview: Increases the damage of Magic Trap.
     onLevelUp: Damage+, Cast Speed-
     apCost: 2
-    unlock: Blood Orb Tree
+    unlock: Sorcerer Blood Orb Tree
     upgrades: []
 
   - name: Pleasant Drift
@@ -634,5 +634,5 @@ Sorcerer:
     overview: Reduce stamina consumption of Back Move.
     onLevelUp: Stamina Consumption-
     apCost: 2
-    unlock: Blood Orb Tree
+    unlock: Sorcerer Blood Orb Tree
     upgrades: []
