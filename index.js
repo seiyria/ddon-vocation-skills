@@ -1,4 +1,6 @@
 
+Vue.use(window['bootstrap-vue']);
+
 var vue = new Vue({
     el: '#app',
     data: {
@@ -18,6 +20,7 @@ var vue = new Vue({
         showData: { baseSkills: true, unlockedSkills: true, baseAugs: true, unlockedAugs: true },
         translations: { enemy: {}, skills: {}, augments: {} },
         vocationData: {},
+        showModal: {},
         neededData: [],
         loading: true
     },

@@ -29,6 +29,7 @@
     </style>
 
     <script src="https://unpkg.com/vue@2.5.6"></script>
+    <script src="https://unpkg.com/bootstrap-vue@1.1.0/dist/bootstrap-vue.min.js"></script>
     <script src="https://unpkg.com/lodash@4.17.4"></script>
     <script src="https://unpkg.com/clipboard-polyfill@2.3.0/build/clipboard-polyfill.js"></script>
     <script src="https://unpkg.com/yamljs@0.3.0/dist/yaml.min.js"></script>
@@ -176,10 +177,22 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer" v-if="skill.unlock">
+                            <div class="card-footer" v-if="skill.unlock || skill.extendedDescription">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col" v-if="skill.unlock">
                                         <i class="fa fa-key"></i> Unlocked By: {{ skill.unlock }}
+                                    </div>
+                                    <div class="col" v-if="skill.extendedDescription">
+                                        <button class="btn btn-sm btn-info" v-b-modal="skill.name">
+                                            <i class="fa fa-info-circle"></i>
+                                            Skill Insights
+                                        </button>
+
+                                        <b-modal :title="skill.name + ' Insights'" :id="skill.name" size="lg" :centered="true" :ok-only="true">
+                                            <div class="modal-body">
+                                                {{ skill.extendedDescription }}
+                                            </div>
+                                        </b-modal>
                                     </div>
                                 </div>
                             </div>
