@@ -166,7 +166,7 @@
                                                     <ul v-if="skill.upgrades[level]" class="mb-0">
                                                         <li v-for="upgrade of skill.upgrades[level].monsters">
                                                             <a :href="'/ddon-monster-locations#' + upgrade.name" target="_blank">
-                                                                {{ upgrade.name }} ~ Lv. {{ upgrade.level }} (x{{ upgrade.qty }})
+                                                                {{ upgrade.name }} <span v-if="translations.enemy[upgrade.name]">{{ translations.enemy[upgrade.name] }}</span> ~ Lv. {{ upgrade.level }} (x{{ upgrade.qty }})
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -226,7 +226,7 @@
                                                     <ul v-if="skill.upgrades[level]" class="mb-0">
                                                         <li v-for="upgrade of skill.upgrades[level].monsters">
                                                             <a :href="'/ddon-monster-locations#' + upgrade.name" target="_blank">
-                                                                {{ upgrade.name }} ~ Lv. {{ upgrade.level }} (x{{ upgrade.qty }})
+                                                                {{ upgrade.name }} <span v-if="translations.enemy[upgrade.name]">{{ translations.enemy[upgrade.name] }}</span> ~ Lv. {{ upgrade.level }} (x{{ upgrade.qty }})
                                                             </a>
                                                         </li>
                                                     </ul>

@@ -16,7 +16,7 @@ var vue = new Vue({
             { name: 'Spirit Lancer',    color: 'warning' },
         ],
         showData: { baseSkills: true, unlockedSkills: true, baseAugs: true, unlockedAugs: true },
-        translations: { monsters: {}, skills: {}, augments: {} },
+        translations: { enemy: {}, skills: {}, augments: {} },
         vocationData: {},
         neededData: [],
         loading: true
@@ -76,7 +76,7 @@ function translationXMLToHash(xmlData) {
     _.each(xmlData.resource[0].message, ({ original, translation }) => {
         translations[translation[0]._text] = original[0]._text;
     });
-    
+
     return translations;
 }
 
