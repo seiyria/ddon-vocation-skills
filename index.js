@@ -118,7 +118,7 @@ axios.get('skills.yml')
 
         var enemyPromise = oldEnemyTranslationData ? Promise.resolve(oldEnemyTranslationData) : axios.get(enemy);
         var augmentsPromise = oldAugmentsTranslationData ? Promise.resolve(oldAugmentsTranslationData) : axios.get(augments);
-        var skillsPromises = oldSkillsTranslationData ? [Promise.resolve(oldAugmentsTranslationData)] : skills.map(url => axios.get(url));
+        var skillsPromises = oldSkillsTranslationData ? [Promise.resolve(oldSkillsTranslationData)] : skills.map(url => axios.get(url));
 
         return Promise.all([Promise.resolve(_commit), enemyPromise, augmentsPromise, ...skillsPromises]);
     }).then(([ _commit, enemy, augments, ...skills ]) => {
