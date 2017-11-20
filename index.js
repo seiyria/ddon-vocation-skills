@@ -36,6 +36,9 @@ var vue = new Vue({
         },
         scrollTo(id) {
             document.getElementById(id).scrollIntoView();
+        },
+        calcDPS(dps) {
+            return (dps.dps * dps.time).toFixed(2);
         }
     }
 });

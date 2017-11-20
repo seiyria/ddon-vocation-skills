@@ -26,6 +26,10 @@
             align-items: center;
             cursor: pointer;
         }
+
+        .has-more-info {
+            border-bottom: 1px dotted #005cbf;
+        }
     </style>
 
     <script src="https://unpkg.com/vue@2.5.6"></script>
@@ -81,6 +85,9 @@
 
                     <ul class="navbar-nav ml-auto">
                         <li>
+                            <a class="nav-link" @click.prevent="scrollTo('about')">About</a>
+                        </li>
+                        <li>
                             <a class="nav-link" @click.prevent="scrollTo('skills')">Skills</a>
                         </li>
                         <li>
@@ -126,6 +133,18 @@
             </div>
         </div>
 
+        <div v-cloak class="row mt-3" v-if="selectedVocation && (showData.baseSkills || showData.unlockedSkills)" id="about">
+            <div class="col">
+                <nav class="navbar navbar-dark bg-dark text-center">
+                    <a class="navbar-brand" href @click.prevent>About The {{ selectedVocation }}</a>
+                </nav>
+            </div>
+        </div>
+
+        <div v-cloak class="row mt-3" v-if="selectedVocation">
+            <div class="col" v-html="vocationData[selectedVocation].desc"></div>
+        </div>
+
         <div v-cloak class="row mt-3" v-if="selectedVocation && (showData.baseSkills || showData.unlockedSkills)" id="skills">
             <div class="col">
                 <nav class="navbar navbar-dark bg-dark text-center">
@@ -150,8 +169,15 @@
                                 <div class="row">
                                     <div class="col">
                                         <h5>Details</h5>
-                                        <p v-if="skill.castTime"><strong>Cast Time</strong>: {{ skill.castTime }} seconds</p>
-                                        <p>{{ skill.overview }}</p>
+                                        <p v-if="skill.skillType" class="mb-0"><strong>Skill Type</strong>: {{ skill.skillType }} Skill</p>
+                                        <p v-if="skill.castTime" class="mb-0"><strong>Cast Time</strong>: {{ skill.castTime }}</p>
+                                        <p v-if="skill.dps" class="mb-0" v-for="dps in skill.dps">
+                                            <strong>DPS ({{ dps.name }})</strong>: <span class="has-more-info" v-b-tooltip.hover :title="'Total Multiplier: ' + calcDPS(dps) + '%'">{{ dps.dps }}% ({{ dps.time }}s)</span>
+                                        </p>
+                                        <p v-if="skill.debilitations" class="mb-0" v-for="deb in skill.debilitations">
+                                            <strong>Debilitation Rate ({{ deb.name }})</strong>: {{ deb.rating }}
+                                        </p>
+                                        <p class="mt-3">{{ skill.overview }}</p>
                                         <h5>Levelup Details</h5>
                                         <p v-if="skill.onEx"><strong>EX</strong>: {{ skill.onEx }}</p>
                                         <p v-if="skill.onLevelUp"><strong>Every Level</strong>: {{ skill.onLevelUp }}</p>
@@ -185,11 +211,11 @@
                                     <div class="col" v-if="skill.extendedDescription">
                                         <button class="btn btn-sm btn-info" v-b-modal="skill.name">
                                             <i class="fa fa-info-circle"></i>
-                                            Skill Insights
+                                            Skill Insights ({{ skill.skillRating }}/10)
                                         </button>
 
                                         <b-modal :title="skill.name + ' Insights'" :id="skill.name" size="lg" :centered="true" :ok-only="true">
-                                            <div class="modal-body">
+                                            <div class="modal-body" v-html="skill.extendedDescription">
                                                 {{ skill.extendedDescription }}
                                             </div>
                                         </b-modal>

@@ -4,6 +4,10 @@ translations:
   repo: riftcrystal/DDON-Translation
 
 Sorcerer:
+  desc: >
+    <p>Sorcerers cast spells and it's pretty neat.</p>
+
+    <p>Here's another paragraph for fun.</p>
   skills:
   - name: Firestorm
     levelRequirement: 1
@@ -11,7 +15,19 @@ Sorcerer:
     onLevelUp: Damage further increases.
     castTime: 3.36s
     onLevelSix: Streams a second wave by tapping the attack button during the first wave.
-    extendedDescription: This is a really long description saying how good or bad Fire Storm is.
+    extendedDescription: >
+      <p>This is a really long description saying how good or bad Fire Storm is.</p>
+
+      <p>It has multiple lines that are separated into HTML paragraphs.</p>
+    dps:
+      - name: Close
+        time: 2.35
+        dps: 997
+    debilitations:
+      - name: Close
+        rating: Below Average
+    skillType: Mob
+    skillRating: 5
     upgrades:
     - upgradeLevel: 7
       monsters:
