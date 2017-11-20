@@ -5,7 +5,7 @@ translations:
 
 Sorcerer:
   skills:
-  - name: Fire Storm
+  - name: Firestorm
     levelRequirement: 1
     overview: After charging, sprays a stream of fire from left to right.
     onLevelUp: Damage further increases.
