@@ -3,6 +3,9 @@ translations:
   commit: a27f3574
   repo: riftcrystal/DDON-Translation
 
+skillTypeDescriptions:
+  Mob: This skill is primarily used for clearing single mobs.
+
 Sorcerer:
   desc: >
     <p>Sorcerers cast spells and it's pretty neat.</p>

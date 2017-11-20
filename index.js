@@ -18,6 +18,7 @@ var vue = new Vue({
             { name: 'Spirit Lancer',    color: 'warning' },
         ],
         showData: { baseSkills: true, unlockedSkills: true, baseAugs: true, unlockedAugs: true },
+        skillTypeDescriptions: {},
         translations: { enemy: {}, skills: {}, augments: {} },
         vocationData: {},
         showModal: {},
@@ -99,9 +100,12 @@ axios.get('skills.yml')
         var data = formatData(YAML.parse(res.data));
 
         var translations = data.translations;
+        var skillTypeDescriptions = data.skillTypeDescriptions;
 
         delete data.translations;
+        delete data.skillTypeDescriptions;
 
+        vue.skillTypeDescriptions = skillTypeDescriptions;
         vue.vocationData = data;
         vue.loading = false;
 
