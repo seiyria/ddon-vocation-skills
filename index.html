@@ -32,6 +32,7 @@
     <script src="https://unpkg.com/lodash@4.17.4"></script>
     <script src="https://unpkg.com/clipboard-polyfill@2.3.0/build/clipboard-polyfill.js"></script>
     <script src="https://unpkg.com/yamljs@0.3.0/dist/yaml.min.js"></script>
+    <script src="https://unpkg.com/xmltojson"></script>
     <script src="https://unpkg.com/axios@0.17.1/dist/axios.min.js"></script>
 </head>
 <body>
@@ -140,7 +141,9 @@
                     <div class="col">
                         <div class="card" :id="selectedVocation + '-' + skill.name">
                             <div class="card-header">
-                                <a href @click.prevent="selectSkill(skill.name)">Ability: {{ skill.name }} ~ Lv. {{ skill.levelRequirement }}</a>
+                                <a href @click.prevent="selectSkill(skill.name)">
+                                    Ability: {{ skill.name }} <span v-if="translations.skills[skill.name]">{{ translations.skills[skill.name] }}</span> ~ Lv. {{ skill.levelRequirement }}
+                                </a>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -202,7 +205,7 @@
                     <div class="col">
                         <div class="card" :id="selectedVocation + '-' + skill.name">
                             <div class="card-header">
-                                <a href @click.prevent="selectSkill(skill.name)">Augment: {{ skill.name }} ~ Lv. {{ skill.levelRequirement }}</a>
+                                <a href @click.prevent="selectSkill(skill.name)">Augment: {{ skill.name }} <span v-if="translations.augments[skill.name]">{{ translations.augments[skill.name] }}</span> ~ Lv. {{ skill.levelRequirement }}</a>
                             </div>
                             <div class="card-body">
                                 <div class="row">

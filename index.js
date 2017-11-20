@@ -16,6 +16,7 @@ var vue = new Vue({
             { name: 'Spirit Lancer',    color: 'warning' },
         ],
         showData: { baseSkills: true, unlockedSkills: true, baseAugs: true, unlockedAugs: true },
+        translations: { monsters: {}, skills: {}, augments: {} },
         vocationData: {},
         neededData: [],
         loading: true
@@ -69,10 +70,83 @@ function formatData(data) {
     return data;
 }
 
+function translationXMLToHash(xmlData) {
+    var translations = {};
+
+    _.each(xmlData.resource[0].message, ({ original, translation }) => {
+        translations[translation[0]._text] = original[0]._text;
+    });
+
+    console.log(translations)
+
+    return translations;
+}
+
+function loadKey(key) {
+    return JSON.parse(localStorage.getItem(key));
+}
+
+function saveKey(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
+
 axios.get('skills.yml')
     .then(res => {
-        vue.vocationData = formatData(YAML.parse(res.data));
+        var data = formatData(YAML.parse(res.data));
+
+        var translationsCommit = data.translationsCommit;
+
+        delete data.translationsCommit;
+
+        vue.vocationData = data;
         vue.loading = false;
 
         loadFromHash();
+
+        return {
+            _commit: translationsCommit,
+            enemy: 'https://cdn.rawgit.com/riftcrystal/DDON-Translation/' + translationsCommit + '/ui/00_message/enemy/enemy_name.xml',
+            augments: 'https://cdn.rawgit.com/riftcrystal/DDON-Translation/' + translationsCommit + '/ui/00_message/skill/ability_name.xml',
+            skills: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => {
+                var padl = _.padStart('' + num, 2, '0');
+                return 'https://cdn.rawgit.com/riftcrystal/DDON-Translation/' + translationsCommit + '/ui/00_message/skill/custom_skill_name_' + padl + '.xml'
+            })
+        };
+    })
+    .then(({ _commit, enemy, augments, skills }) => {
+        var oldEnemyTranslationData = loadKey(_commit + '-enemyTranslation');
+        var oldAugmentsTranslationData = loadKey(_commit + '-augmentsTranslation');
+        var oldSkillsTranslationData = loadKey(_commit + '-skillsTranslation');
+
+        var enemyPromise = oldEnemyTranslationData ? Promise.resolve(oldEnemyTranslationData) : axios.get(enemy);
+        var augmentsPromise = oldAugmentsTranslationData ? Promise.resolve(oldAugmentsTranslationData) : axios.get(augments);
+        var skillsPromises = oldSkillsTranslationData ? [Promise.resolve(oldAugmentsTranslationData)] : skills.map(url => axios.get(url));
+
+        return Promise.all([Promise.resolve(_commit), enemyPromise, augmentsPromise, ...skillsPromises]);
+    }).then(([ _commit, enemy, augments, ...skills ]) => {
+
+        if(enemy.data) {
+            vue.translations.enemy = translationXMLToHash(xmlToJSON.parseString(enemy.data));
+        } else {
+            vue.translations.enemy = enemy;
+        }
+
+        if(augments.data) {
+            vue.translations.augments = translationXMLToHash(xmlToJSON.parseString(augments.data));
+        } else {
+            vue.translations.augments = augments;
+        }
+
+        if(skills && skills[0].data) {
+            vue.translations.skills = _.reduce(skills, (prev, cur) => {
+                _.extend(prev, translationXMLToHash(xmlToJSON.parseString(cur.data)));
+                return prev;
+            }, {});
+        } else {
+            vue.translations.skills = skills;
+        }
+
+        saveKey(_commit + '-enemyTranslation', vue.translations.enemy);
+        saveKey(_commit + '-augmentsTranslation', vue.translations.augments);
+        saveKey(_commit + '-skillsTranslation', vue.translations.skills);
     });
