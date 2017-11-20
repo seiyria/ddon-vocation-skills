@@ -76,9 +76,7 @@ function translationXMLToHash(xmlData) {
     _.each(xmlData.resource[0].message, ({ original, translation }) => {
         translations[translation[0]._text] = original[0]._text;
     });
-
-    console.log(translations)
-
+    
     return translations;
 }
 
@@ -94,9 +92,9 @@ axios.get('skills.yml')
     .then(res => {
         var data = formatData(YAML.parse(res.data));
 
-        var translationsCommit = data.translationsCommit;
+        var translations = data.translations;
 
-        delete data.translationsCommit;
+        delete data.translations;
 
         vue.vocationData = data;
         vue.loading = false;
@@ -104,12 +102,12 @@ axios.get('skills.yml')
         loadFromHash();
 
         return {
-            _commit: translationsCommit,
-            enemy: 'https://cdn.rawgit.com/riftcrystal/DDON-Translation/' + translationsCommit + '/ui/00_message/enemy/enemy_name.xml',
-            augments: 'https://cdn.rawgit.com/riftcrystal/DDON-Translation/' + translationsCommit + '/ui/00_message/skill/ability_name.xml',
+            _commit: translations.commit,
+            enemy: 'https://cdn.rawgit.com/' + translations.repo + '/' + translations.commit + '/ui/00_message/enemy/enemy_name.xml',
+            augments: 'https://cdn.rawgit.com/' + translations.repo + '/' + translations.commit + '/ui/00_message/skill/ability_name.xml',
             skills: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => {
                 var padl = _.padStart('' + num, 2, '0');
-                return 'https://cdn.rawgit.com/riftcrystal/DDON-Translation/' + translationsCommit + '/ui/00_message/skill/custom_skill_name_' + padl + '.xml'
+                return 'https://cdn.rawgit.com/' + translations.repo + '/' + translations.commit + '/ui/00_message/skill/custom_skill_name_' + padl + '.xml'
             })
         };
     })
