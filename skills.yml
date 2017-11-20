@@ -8,9 +8,9 @@ skillTypeDescriptions:
 
 Sorcerer:
   desc: >
-    <p>Sorcerers cast spells and it's pretty neat.</p>
+    <p>The Sorcerer is a vocation that commands powerful arcane spells that inflict great damage.</p>
 
-    <p>Here's another paragraph for fun.</p>
+    <p>They use an Archistaff as their primary weapon.</p>
   skills:
   - name: Firestorm
     levelRequirement: 1
