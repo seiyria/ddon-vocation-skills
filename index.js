@@ -141,7 +141,7 @@ axios.get('skills.yml')
                 return prev;
             }, {});
         } else {
-            vue.translations.skills = skills;
+            vue.translations.skills = skills[0];
         }
 
         saveKey(_commit + '-enemyTranslation', vue.translations.enemy);
